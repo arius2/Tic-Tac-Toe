@@ -78,24 +78,16 @@ public:
   }
 
   bool check_draw() // To check if the game ends in draw
-  {
-    int flag = 0;
-    int flagArr[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
-    for (int i = 0; i < 9; i++)
-    {
-      if (Cdraw[i] > 0)
-      {
-        flagArr[i] = 1;
-      }
+  { 
+    int count=0;
+    for(int i=0;i<9;i++){
+      if(draw[i] == 'X' || draw[i] == 'O')
+            count++;
     }
-    for (auto i : flagArr)
-    {
-      flag += i;
-    }
-    if (flag != 9)
-      return false;
-    else
+    if (count==9 && !CheckWin())
       return true;
+    else
+      return false;
   }
 
   void Game_Draw() // what to print if game ends in draw
@@ -179,6 +171,6 @@ int main()
       }
     }
   }
-
+  system("pause");
   return 0;
 }
